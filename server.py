@@ -11,7 +11,7 @@ def post_test():
 
     #여기서 작업
 
-    #프론트에 보낼 데이터(넘겨야할 데이터를 여기에 담으면 됨)
+    #프론트에 보낼 데이터(넘겨야할 데이터를 여기에 담으면 됨, 무조건 딕셔너리 형태로 담아야함)
     res = { "result" : "성공" }
     return json.dumps(res,ensure_ascii=False)
 
