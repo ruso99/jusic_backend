@@ -39,5 +39,20 @@ def getCompanyList():
     res = stock_cd
     return json.dumps(res,ensure_ascii=False)
 
+#랭킹 페이지
+@app.route('/get/ranking',methods=['POST'])
+def getRanking():
+
+    #프론트에 보낼 데이터
+    res = { }
+    return json.dumps(res,ensure_ascii=False)
+
+#기록을 전송
+@app.route('/get/record')
+def getRecord():
+    data = request.get_json()
+
+    return json.dumps(res,ensure_ascii=False)
+
 if __name__ == '__main__':
     app.run(host = '0.0.0.0',port=5080)
