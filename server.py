@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 from flask import Flask, request, jsonify, render_template
 import json
+import getStockData
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ def getStockCode():
 
         return df
 
+
 @app.route('/get/result', methods=['POST'])
 def getResult():
     #받아오는 데이터
@@ -20,12 +22,41 @@ def getResult():
 
     #여기서 작업
 
-    # 받아온 데이터에 해당하는 데이터 크롤링
+    #받아온 데이터에 해당하는 데이터 크롤링
+    userName = data["userName"]
+    companyCode = data["companyCode"]
+    startYear = data["startDate"][0]["startYear"]
+    startMonth= data["startDate"][1]["startMonth"]
+    startDay = data["startDate"][2]["startDay"]
+    agencyNetsales = data["foreignTradeVolume"][0]["agencyNetsales"]
+    foreignerNetsales = data["foreignTradeVolume"][1]["foreignerNetsales"]
+    foreignerSharesheld = data["foreignTradeVolume"][2]["foreignerSharesheld"]
+    usdkrw = data["exchangeRate"][0]["usdkrw"]
+    jpykrw = data["exchangeRate"][1]["jpykrw"]
+    cnykrw = data["exchangeRate"][2]["cnykrw"]
+    kospi = data["stockMarket"][0]["kospi"]
+    kosdaq = data["stockMarket"][1]["kosdaq"]
+    dji = data["stockMarket"][2]["dji"]
+    nas = data["stockMarket"][3]["nas"]
+    shs = data["stockMarket"][4]["shs"]
+    nii = data["stockMarket"][5]["nii"]
+    indicatorOne = data["supplementaryIndicator"][0]["indicatorOne"]
+    indicatorTwo = data["supplementaryIndicator"][1]["indicatorTwo"]
 
-    # 크롤링한 데이터 딥러닝에 전달
+    # basic정보 크롤링
+    # dataframe 형태
+    basicData = getStockData.getBasicData(companyCode, startYear, startMonth, startDay)
+    foreigner = getStockData.getForeignerData(companyCode, startYear, startMonth, startDay, agencyNetsales,
+                                              foreignerNetsales, foreignerSharesheld)
+
+    #크롤링한 데이터 딥러닝에 전달
+
 
     #프론트에 보낼 데이터(넘겨야할 데이터를 여기에 담으면 됨, 무조건 딕셔너리 형태로 담아야함)
     res = { "result" : "성공" }
+
+    #결과를 DB에 저장
+
     return json.dumps(res,ensure_ascii=False)
 
 #페이지 첫 로드시에 가져오는 데이터
