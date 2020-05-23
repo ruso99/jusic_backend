@@ -8,6 +8,7 @@ import pymysql
 app = Flask(__name__)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def getStockCode():
         url = 'http://kind.krx.co.kr/corpgeneral/corpList.do?method=download'
         df = pd.read_html(url, header=0)[0]
@@ -21,6 +22,8 @@ def getStockCode():
 
 =======
 >>>>>>> parent of c436714... [ADD]getCompanyList() 추가
+=======
+>>>>>>> parent of c436714... [ADD]getCompanyList() 추가
 @app.route('/get/result', methods=['POST'])
 def getResult():
     #받아오는 데이터
@@ -28,6 +31,7 @@ def getResult():
 
     #여기서 작업
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     #받아온 데이터에 해당하는 데이터 크롤링
     userName = data["nickname"]
@@ -55,6 +59,8 @@ def getResult():
 
 =======
 >>>>>>> parent of c436714... [ADD]getCompanyList() 추가
+=======
+>>>>>>> parent of c436714... [ADD]getCompanyList() 추가
     #프론트에 보낼 데이터(넘겨야할 데이터를 여기에 담으면 됨, 무조건 딕셔너리 형태로 담아야함)
     res = { "result" : "성공" }
 
@@ -67,6 +73,7 @@ def getResult():
 def getCompanyList():
     data = request.get_json()
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     # 종목코드를 받아서 딕셔너리 형태로 바꿈({"name":"code", "company1":"code1", "company2":"code2"})
     df = getStockCode()
@@ -101,6 +108,9 @@ def getRanking():
 def getRecord():
     data = request.get_json()
 
+=======
+    res = { "result" : "성공" }
+>>>>>>> parent of c436714... [ADD]getCompanyList() 추가
 =======
     res = { "result" : "성공" }
 >>>>>>> parent of c436714... [ADD]getCompanyList() 추가
