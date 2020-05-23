@@ -1,0 +1,7 @@
+{
+  "host": "stockprice.ch9x2a3fnkvg.ap-northeast-2.rds.amazonaws.com",
+  "user": "admin",
+  "password": "stockprice".
+  "port": "3306",
+  "database": "stock_info"
+}
