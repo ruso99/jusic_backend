@@ -68,9 +68,10 @@ def getCompanyList():
 #랭킹 페이지
 @app.route('/get/rankinginfos',methods=['POST'])
 def getRanking():
+    #해당 DB에는 외부접속가능하니 접속해서 DB구조 옮기고 설정하면 됨
     #MySQL Connection 연결
-    dbcon = pymysql.connect(host='stockprice.ch9x2a3fnkvg.ap-northeast-2.rds.amazonaws.com', port=3306, user='admin',
-                         passwd='stockprice', db='stock_info', charset='utf8')
+    dbcon = pymysql.connect(host='ec2-13-125-236-211.ap-northeast-2.compute.amazonaws.com', port=3306, user='user',
+                         passwd='stockprice', db='', charset='utf8')
     #Connection 으로부터 Cursor 생성
     curs = dbcon.cursor()
 
