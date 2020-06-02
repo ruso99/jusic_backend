@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 import json
 #import getStockData
 import pymysql
 
 
 app = Flask(__name__)
+CORS(app)
 
 def getStockCode():
         url = 'http://kind.krx.co.kr/corpgeneral/corpList.do?method=download'
